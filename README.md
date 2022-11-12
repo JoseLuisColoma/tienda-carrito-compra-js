@@ -1,1 +1,1 @@
-# TiendaJS
+# TiendaJS para realizar un carrito de compra con vanilla JavaScript 
