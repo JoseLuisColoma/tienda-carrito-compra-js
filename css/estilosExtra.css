@@ -1,0 +1,108 @@
+body{
+  background-color: lightgrey;
+}
+
+#contenedor{
+  margin-left: 20px;
+  margin-top: 10px;
+  height: auto;
+  position: auto;
+}
+
+.cardExtra{
+  margin-bottom: 10px;
+}
+
+.navbarExtra{
+  position: fixed;
+  width: 100%;
+  background-color: steelblue;
+  color: white;
+  padding-left: 35px;
+  text-align: center;
+  font-weight: bold;
+  z-index: 100;
+}
+
+.btn-success{
+  width: 100%;
+  padding-bottom: 10px;
+  font-size: 16px;
+  background-color: steelblue;
+  border-color: steelblue;
+  font-weight: bold;
+  display:block;
+}
+
+.btn-success:hover{
+  width: 100%;
+  font-size: 16px;
+  background-color: cadetblue ;
+  color: white;
+  font-weight: bold;
+  display:block;
+
+}
+
+
+.card-title{
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-descripction{
+  font-size: 14px;
+  text-align: center;
+}
+
+.card-precio{
+  font-weight: bold;
+  color: green;
+  font-size: 18px;
+  text-align: center;
+}
+
+.hide, .remove {
+  display: none;
+}
+
+
+.totalPrecio{
+  font-weight: bold;
+  color: green;
+  font-size: 22px;
+  text-align: center;
+}
+
+td, tr, th, table {
+  vertical-align: middle;
+  text-align: left;
+  background-color: whitesmoke;
+}
+
+
+.reloj{
+  font-size: 16px;
+  font-style: italic;
+  font-family: monospace;
+}
+
+.miDialogo {
+  background-color: whitesmoke;
+  padding-left: 40px;
+  padding-right: 60px;
+  
+  width: 1200;
+  height: auto;
+}
+
+
+.alertExtra{
+
+  z-index: 1000;
+  text-align: center;
+  margin-left: 250px;
+  margin-right: 250px;
+  
+}
