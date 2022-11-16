@@ -6,14 +6,11 @@
 	<meta name="author" content="Jose Luis Coloma - 2ºDAW" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/x-icon" href="assets/img/carritoBlanco.png">
-
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/estilosExtra.css">
 
 </head>
-
 <body>
-
 	<!-- Navbar BootStrap -->
 	<nav class="navbar navbar-light navbarExtra">
 	  <a class="navbar-brand" href="#">
@@ -21,63 +18,61 @@
 	  </a>
 
     <select id="criteriosOrdenacion"></select>
-
+		<button id="btnAdministrador "class="btnAdministrador btn-info">administradores</button>
 		<a id="irACarrito" title="Ir a carrito" href="#">
 			<img src="assets/img/carritoBlanco.png" height="30px" alt="carrito" />
 		</a>
 	</nav>
-	<br><br><br>
-	<div class="alert alert-primary alertExtra hide" role="alert">
-			¡Artículo añadido al carrito!
-	</div>
 	<!-- Div contenedor de los cards de articulos -->
 	<div id="contenedor" class="row row-cols-3 row-cols-md-6 g-4"></div>
 
 	<!-- Componente HTML para dialogos modales -->
 	<dialog id="miDialogo" class="miDialogo" onLoad="actualizaReloj()">
-		<div class="alert container position-sticky top-0 alert-primary hide" role="alert">
-			 ¡Artículo añadido al carrito!
-		</div>
-		<div class="alert container position-sticky top-0 alert-danger remove" role="alert">
-				¡Artículo Borrado!
-		</div>
-		<div id="dialogHead" >
-			<h4><b>Carrito</b><span id="idPedido" class="h4" ></span></h4>
+		<div id="dialogHead">
+			<h5><b>CARRITO DE COMPRA</b>&nbsp;&nbsp;&nbsp;&nbsp;
+				nº pedido:&nbsp;<b></b><span id="idPedido" class="h4 alert-primary text-right"></span></b>
+				<br><br>
+			<div id="posicionReloj" class="text-left reloj"></div>
 			<hr>
 		</div>
+		<div class="alert container position-sticky top-0 alert-primary hide" role="alert">
+				¡Artículo añadido al carrito!
+	   	</div>
+	   	<div class="alert container position-sticky top-0 alert-danger remove" role="alert">
+				¡Artículo Borrado!
+	   	</div>
 		<div>
-			<table class="table table-light table-hover">
-        <thead>
-          <tr class="text-primary">
-						<th scope="col">Ref.</th>
-						<th scope="col">Imagen</th>
-            <th scope="col">Nombre</th>
-						<th scope="col">Descripción</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Uds.</th>
-          </tr>
-        </thead>
-        <tbody class="tbody"></tbody>
-      </table>
-		</div>
-		<div id="dialogContent" class="dialogContent">
+			<table id="carrito" class="carrito table-light table-hover">
+				<thead class="text-primary">
+					<th class="text-center" scope="row">Ref.</th>
+					<th class="text-center" scope="row">Imagen</th>
+					<th class="text-center" scope="row">Nombre</th>
+					<th class="text-center" scope="row">Descripción</th>
+					<th class="text-center" scope="row">Precio</th>
+					<th class="text-center" scope="row">Uds.</th>
+					<th class="text-center" scope="row">Total</th>
+				</thead>
+        		<tbody id="tbody" class="tbody">
+
+				</tbody>
+      		</table>
+			<div id="dialogContent" class="dialogContent">
+			</div>
 		</div>
 		<hr>
 		<div id="dialogFooter">
-			<h5 class="text-right"><b>IMPORTE TOTAL: <span id="total" class="precioTotal totalPrecio"></span></b></h5>
+			<h5 class="text-right"><b>IMPORTE TOTAL:&nbsp;&nbsp;<span id="total" class="precioTotal totalPrecio"></span></b></h5>
 		</div>
 		<hr>
 		<div class="text-center">
 			<button id="btnCierraDialog" class="btn btn-secondary">Seguir comprando</button>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			<button id="btnEfectuaPedido"class="btn btn-info">Efectuar pedido</button>
 		</div>
-		<br>
-		<div id="posicionReloj" class="text-left reloj"></div>
 	</dialog>
-
 	<script src="./js/datos.js"></script>
 	<script src="./js/carrito.js"></script>
 	<script src="./js/tienda.js"></script>
-
+	<script src="./js/reloj.js"></script>
 </body>
 </html>

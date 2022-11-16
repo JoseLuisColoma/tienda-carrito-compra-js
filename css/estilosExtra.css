@@ -2,6 +2,7 @@ body{
   background-color: lightgrey;
 }
 
+
 #contenedor{
   margin-left: 20px;
   margin-top: 10px;
@@ -9,20 +10,26 @@ body{
   position: auto;
 }
 
+
 .cardExtra{
   margin-bottom: 10px;
 }
 
+
 .navbarExtra{
-  position: fixed;
-  width: 100%;
+  /*display:grid;*/
+  /*grid-template-columns: 1fr auto;*/
+  align-items: center;
   background-color: steelblue;
-  color: white;
+  font-family: sans-serif;
+  vertical-align: middle;
   padding-left: 35px;
-  text-align: center;
-  font-weight: bold;
+  position:fixed;
+  top:0;
+  width:100%;
   z-index: 100;
 }
+
 
 .btn-success{
   width: 100%;
@@ -34,14 +41,14 @@ body{
   display:block;
 }
 
+
 .btn-success:hover{
   width: 100%;
   font-size: 16px;
-  background-color: cadetblue ;
+  background-color: cadetblue;
   color: white;
   font-weight: bold;
   display:block;
-
 }
 
 
@@ -51,10 +58,12 @@ body{
   text-align: center;
 }
 
+
 .card-descripction{
   font-size: 14px;
   text-align: center;
 }
+
 
 .card-precio{
   font-weight: bold;
@@ -62,6 +71,7 @@ body{
   font-size: 18px;
   text-align: center;
 }
+
 
 .hide, .remove {
   display: none;
@@ -74,6 +84,7 @@ body{
   font-size: 22px;
   text-align: center;
 }
+
 
 td, tr, th, table {
   vertical-align: middle;
@@ -92,17 +103,30 @@ td, tr, th, table {
   background-color: whitesmoke;
   padding-left: 40px;
   padding-right: 60px;
-  
   width: 1200;
   height: auto;
 }
 
 
 .alertExtra{
-
   z-index: 1000;
   text-align: center;
   margin-left: 250px;
   margin-right: 250px;
-  
+}
+
+
+.btnAdministrador{
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 8px;
+  margin-left: auto;
+  background-color: cadetblue;;
+  color:white;
+  margin-right: 30px;
+}
+
+
+.btnExtra{
+  color: white;
 }
