@@ -1,6 +1,4 @@
 class Carrito{
-    id;
-	articulos = [];
 
 	constructor(id) {
 		this.id = id;
@@ -8,12 +6,12 @@ class Carrito{
 	}
 
     anyadeArticulo(articulo) {
-		let esArticulo = this.articulos.find(a => a.codigo === articulo.codigo);
+		let esArticulo = this.articulos.findIndex(a => a.codigo === articulo.codigo);
 		let alert=document.querySelector('.alert');
 
-		if (esArticulo) {
-			this.modificaUnidades(articulo.codigo, "sumar");
-			console.log("es")
+		if (esArticulo != -1) {
+			this.articulos[esArticulo].unidades+=1;
+
 		} else {
 			articulo.unidades = 1;
 			this.articulos.push(articulo);
@@ -27,14 +25,18 @@ class Carrito{
 
 	borraArticulo(codigo) {
 		let pos = this.articulos.findIndex(c => c.codigo === codigo);
+
 		let alert = document.querySelector('.remove');
+		document.getElementById("tbody").deleteRow(pos);
 
 		this.articulos.splice(pos, 1);
 
-		document.getElementById("tbody").deleteRow(pos);
 
-		setTimeout( function(){ alert.classList.add('hide');
-			}, 2500);
+		if(pos != -1){
+			setTimeout( function(){ alert.classList.add('hide');
+		}, 2500);
+		}
+
 
 		alert.classList.remove('hide');
 
@@ -57,9 +59,9 @@ class Carrito{
 		if (this.articulos[pos].unidades == 0) {
 			this.borraArticulo(codigo);
 		} else {
-			let celdasArticulo = document.getElementById("carrito").rows[pos].cells;
-			celdasArticulo[4].innerHTML = this.articulos[pos].unidades;
-			celdasArticulo[5].innerHTML = this.articulos[pos].unidades * this.articulos[pos].precio;
+			let casillas = document.getElementById("tbody").rows[pos].cells;
+			casillas[5].innerHTML = this.articulos[pos].unidades;
+			casillas[6].innerHTML = this.articulos[pos].unidades * this.articulos[pos].precio;
 		}
 		this.calcularPrecioTotal();
 	}
@@ -67,43 +69,38 @@ class Carrito{
 
     verCarrito() {
         let ventanaDialogoCarrito = document.getElementById("miDialogo");
-		let idPedido = document.getElementById("idPedido");
+		let idCarrito = document.getElementById("idPedido");
         let botonIrACarrito = document.getElementById('irACarrito');
 		let botonEliminar = document.getElementById('btnCierraDialog');
         let botonSeguirComprando = document.getElementById('btnCierraDialog');
-        let botonHacerPedido = document.getElementById('btnEfectuaPedido');
 		let tbody = document.getElementById("tbody");
 		let tr = document.createElement("tr");
-		let euro = ",00€";
-	/*
-		if((carrito.articulos.length == 0 && !window.onload)){
-			alert("El carrito está vacio");
-			ventanaDialogoCarrito.close();
-		}else if(window.onload){
-			ventanaDialogoCarrito.close();
-		} else{
-			ventanaDialogoCarrito.showModal();
-		}
-	*/
-		idPedido.innerHTML = numeroAleatorio;
+
+
+	
+
+		idCarrito.innerHTML = idPedido;
 
 		let contenido="";
 		carrito.articulos.forEach(articulo => {
 			contenido +=
 			`<tr>
 				<td class="text-center"><b>${numeroAleatorio2}</b></td>&nbsp;&nbsp;
-				<td class="text-center"><img src='./../assets/img/${articulo.codigo}.jpg' width='50' height='50' alt='imagen'></th>&nbsp;&nbsp;
+				<td class="text-center"><img src='../assets/img/${articulo.codigo}.jpg' width='50' height='50' alt='imagen'></th>&nbsp;&nbsp;
 				<td class="text-center"><b>${articulo.nombre}&nbsp;&nbsp;</b></td>&nbsp;
 				<td class="text-center">${articulo.descripcion}&nbsp;&nbsp;&nbsp;&nbsp;</td>&nbsp;
-				<td class="text-center">${articulo.precio}${euro}</td>&nbsp;
-				<td class="text-center"><b>${articulo.unidades}</b></td>&nbsp;&nbsp;
-				<td class="text-center">${articulo.precio * articulo.unidades}${euro}</td>&nbsp;&nbsp;
+				<td class="text-center">${articulo.precio}</td>&nbsp;
+				<td class="text-center">${articulo.unidades}</td>&nbsp;&nbsp;
+				<td class="text-center">${articulo.precio * articulo.unidades}</td>&nbsp;&nbsp;
 				<td class="text-center">
-					&nbsp;&nbsp;&nbsp;&nbsp;<a id="sumar" class="restar btn btn-primary"><b>-</b></a>
-					&nbsp;<a id="restar" class="sumar btn btn-primary"><b>+</b></a>
-					&nbsp;<a class="delete btn btn-danger"><b>Eliminar</b></a>
+
+				&nbsp;&nbsp;&nbsp;&nbsp;<button id="restar_${articulo.codigo}" class="restar btn btn-primary" onclick='carrito.modificaUnidades(${JSON.stringify(articulo.codigo)}, ${restar})'><b>-</b></button>
+				&nbsp;&nbsp;<button class="btn btn-primary" onclick='carrito.modificaUnidades(${JSON.stringify(articulo.codigo)}, ${sumar})'><b>+</b></button>
+				&nbsp;&nbsp;<button class="btn btn-danger alert-danger" onclick='borraArticuloEnCarrito(${JSON.stringify(articulo.codigo)})'><b>ELIMINAR</b></button>
 				</td>
-			</tr>`
+
+				</td>
+			</tr>`;
 			tbody.innerHTML = contenido;
 			tbody.append(tr);
 			numeroAleatorio2=parseInt(Math.random()*(100000-1) + 1);;
@@ -115,7 +112,6 @@ class Carrito{
 		botonEliminar.addEventListener("click", () => this.borraArticulo());
 		botonIrACarrito.addEventListener("click", () => ventanaDialogoCarrito.showModal());
 		botonSeguirComprando.addEventListener('click', () => ventanaDialogoCarrito.close());
-		botonHacerPedido.addEventListener('click', () => efectuaPedido());
 
     }
 

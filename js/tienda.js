@@ -2,10 +2,18 @@ let criterios=["Sin ordenar","Ascendente por precio", "Descendente por precio"]
 let nuevoArrayArticulos = [...listaArticulos]; 
 let numeroAleatorio = parseInt(Math.random()*(1000-1) + 1);
 let numeroAleatorio2 = parseInt(Math.random()*(1000-1) + 1);
+let numeroAleatorio3 = parseInt(Math.random()*(1000-1) + 1);
 let tbody= document.querySelector('.tbody');
 let orden = '';
 let sumar = 'sumar';
 let restar = 'restar';
+let irACarrito = document.getElementById("irACarrito");
+let ventanaDialogoCarrito = document.getElementById("miDialogo");
+let idPedido=500;
+
+
+//irAAdministrador.addEventListener('click', () => crearNuevoArticulo());
+
 
 //instanciamos un objeto de la clase carrito y le paso como argumento la referencia del carrito
 let carrito = new Carrito(idPedido);
@@ -79,24 +87,46 @@ function borraArticuloEnCarrito(codigoArticulo){
 
 
 function verCarro(){
-	carrito.verCarrito();
+	if(carrito.articulos == 0){
+		alert("El carrito está vacío");
+	}else{
+		carrito.verCarrito();
+		ventanaDialogoCarrito.showModal();
+	}
+
 }
 
 function efectuaPedido(){
-	alert("Su pedido se ha realizado correctamente.\nGracias por su compra.");
+	alert("Su pedido se ha realizado correctamente.\nGracias por su compra\n\n(el pedido se ha enviado al servidor)");
 	let ventanaDialogoCarrito = document.getElementById("miDialogo");
 	ventanaDialogoCarrito.close();
-	console.log(carrito);
+	console.log("OBJETO CARRITO ENVIADO AL SERVIDOR:");
+	console.log(JSON.stringify(carrito));
+	idPedido++;
+}
+
+function pedidoRealizado(){
+	let botonHacerPedido = document.getElementById('btnEfectuaPedido');
+	botonHacerPedido.addEventListener('click', () => efectuaPedido());
 }
 
 
 window.onload=()=>{
 	creaListaCriterios();
-	let irACarrito = document.getElementById("irACarrito");
+
+	if((carrito.articulos.length > 0 )){
+		ventanaDialogoCarrito.showModal();
+	}else if (carrito.articulos.length > 0 && irACarrito.onclick){
+		alert("El carrito está vacio.\nElige artículos con  ");
+		ventanaDialogoCarrito.close();
+	}
+
 	if (irACarrito){
 		irACarrito.addEventListener('click', () => verCarro());
 	}
+
 	creaArticulosDOM(criterios[0]);
 	actualizaReloj();
+	pedidoRealizado();
 }
 
