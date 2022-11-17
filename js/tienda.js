@@ -9,13 +9,9 @@ let sumar = 'sumar';
 let restar = 'restar';
 let irACarrito = document.getElementById("irACarrito");
 let ventanaDialogoCarrito = document.getElementById("miDialogo");
-let idPedido=500;
+let idPedido=202200500;
 
-
-//irAAdministrador.addEventListener('click', () => crearNuevoArticulo());
-
-
-//instanciamos un objeto de la clase carrito y le paso como argumento la referencia del carrito
+//instanciamos un objeto de la clase carrito y le paso como argumento el id del carrito
 let carrito = new Carrito(idPedido);
 
 function creaListaCriterios() {
@@ -103,6 +99,8 @@ function efectuaPedido(){
 	console.log("OBJETO CARRITO ENVIADO AL SERVIDOR:");
 	console.log(JSON.stringify(carrito));
 	idPedido++;
+	carrito= new Carrito(idPedido);
+	
 }
 
 function pedidoRealizado(){
@@ -117,7 +115,7 @@ window.onload=()=>{
 	if((carrito.articulos.length > 0 )){
 		ventanaDialogoCarrito.showModal();
 	}else if (carrito.articulos.length > 0 && irACarrito.onclick){
-		alert("El carrito está vacio.\nElige artículos con  ");
+		alert("El carrito está vacio");
 		ventanaDialogoCarrito.close();
 	}
 

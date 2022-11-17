@@ -1,7 +1,7 @@
 class Carrito{
 
-	constructor(id) {
-		this.id = id;
+	constructor(idPedido) {
+		this.id = idPedido;
 		this.articulos = [];
 	}
 
@@ -86,7 +86,7 @@ class Carrito{
 			contenido +=
 			`<tr>
 				<td class="text-center"><b>${numeroAleatorio2}</b></td>&nbsp;&nbsp;
-				<td class="text-center"><img src='../assets/img/${articulo.codigo}.jpg' width='50' height='50' alt='imagen'></th>&nbsp;&nbsp;
+				<td class="text-center"><img src='../assets/img/${articulo.codigo}.jpg' width='40' height='40' alt='imagen'></th>&nbsp;&nbsp;
 				<td class="text-center"><b>${articulo.nombre}&nbsp;&nbsp;</b></td>&nbsp;
 				<td class="text-center">${articulo.descripcion}&nbsp;&nbsp;&nbsp;&nbsp;</td>&nbsp;
 				<td class="text-center">${articulo.precio}</td>&nbsp;
