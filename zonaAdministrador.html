@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>&nbsp;&nbsp;&nbsp;Tienda Online</title>
+  <meta charset="utf-8">
+	<meta name="author" content="Jose Luis Coloma - 2ºDAW" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="assets/img/carritoBlanco.png">
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/estilosExtra.css">
+
+</head>
+<script src="./js/administrador.js"></script>
+
+<body>
+
+  <nav class="navbar navbar-light navbarExtra">
+	  <a class="navbar-brand" href="#">
+		 <h5 class="text-light">DWEC - Zona administrador</h5>
+	  </a>
+    <a id="botonAbrirDialog" class="btn btnAdministrador " onclick="mostrarVentanaDialogo()">Añadir producto</a>
+    <a class="btn btnVolver" href="./tienda.html">Volver a Tienda</a>
+	</nav>
+  <div class="estructura">
+
+    <div class="c-card">
+      <dialog id="abrirDialog">
+        <h4><b>NUEVO ARTÍCULO</b></h4>
+        <div class="mb-3">
+          <label class="form-label">Código</label>
+          <input type="text" class="form-control" id="codigo" style="width: 250px">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" style="width: 250px">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="descripcion" style="width: 250px">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Precio</label>
+            <input type="text" class="form-control" id="precio" style="width: 250px">
+          </div>
+
+        <button type="button" id="enviado" class="btn btn-primary" onclick="crearNuevoArticulo()">Añadir</button>
+        <button type="button" class="btn btn-secondary" onclick="cerrarVentanaDialogo()">Cerrar</button>
+      </dialog>
+    </div>
+
+  </div>
+
+<div class="center-text tablaExtra" id="contenedor"></div>
+</html>

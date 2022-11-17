@@ -127,6 +127,55 @@ td, tr, th, table {
 }
 
 
+.btnAdministrador{
+  float: right;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: green;
+  color:white;
+  margin-right: 30px;
+}
+
+
+.btnAdministrador:hover{
+  float: right;
+  font-size: 14px;
+  padding: 9px;
+  border-radius: 8px;
+  flex-direction: row;
+  background-color: lightseagreen;
+  color:white;
+  margin-right: 30px;
+}
+
+
+.btnVolver{
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 8px;
+  margin-left: auto;
+  background-color: lightseagreen;
+  color:white;
+  margin-right: 30px;
+}
+
+.btnVolver:hover{
+  font-size: 14px;
+  padding: 9px;
+  border-radius: 10px;
+  margin-left: auto;
+  background-color: green;
+  color:white;
+  margin-right: 30px;
+}
+
+
+
 .btnExtra{
   color: white;
+}
+
+.tablaExtra{
+  width:1000px;
 }

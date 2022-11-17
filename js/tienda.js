@@ -9,10 +9,9 @@ let sumar = 'sumar';
 let restar = 'restar';
 let irACarrito = document.getElementById("irACarrito");
 let ventanaDialogoCarrito = document.getElementById("miDialogo");
-let idPedido=202200500;
+let id=202200500;
 
-//instanciamos un objeto de la clase carrito y le paso como argumento el id del carrito
-let carrito = new Carrito(idPedido);
+let carrito = new Carrito(id);
 
 function creaListaCriterios() {
 	let seleccion = document.getElementById("criteriosOrdenacion");
@@ -98,9 +97,9 @@ function efectuaPedido(){
 	ventanaDialogoCarrito.close();
 	console.log("OBJETO CARRITO ENVIADO AL SERVIDOR:");
 	console.log(JSON.stringify(carrito));
-	idPedido++;
-	carrito= new Carrito(idPedido);
-	
+	id++;
+	carrito= new Carrito(id);
+
 }
 
 function pedidoRealizado(){
@@ -108,6 +107,17 @@ function pedidoRealizado(){
 	botonHacerPedido.addEventListener('click', () => efectuaPedido());
 }
 
+
+function esAdministrador(){
+	document.getElementById('btnAdministrador').onclick = function(){
+		let isAdministrador = confirm('¡Hola!\nEsta zona es SOLO para administradores.\nSe te exigirá una constraseña a continuación.\n\n¿Deseas continuar?');;
+		if(isAdministrador){
+		alert("contraseña ...  OK\n\nBienvenido, Administrador.")
+		}else{
+		 alert("No tienes acceso como Administrador");
+		}
+	}
+}
 
 window.onload=()=>{
 	creaListaCriterios();
@@ -126,5 +136,6 @@ window.onload=()=>{
 	creaArticulosDOM(criterios[0]);
 	actualizaReloj();
 	pedidoRealizado();
+	esAdministrador();
 }
 
