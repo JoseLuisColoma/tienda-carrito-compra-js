@@ -50,9 +50,9 @@ class Carrito{
 	modificaUnidades(codigo, operacion) {
 		let pos = this.articulos.findIndex(c => c.codigo === codigo);
 
-		if (operacion === "sumar") {
+		if (operacion === sumar) {
 			this.articulos[pos].unidades += 1;
-		} else if (operacion === "restar") {
+		} else if (operacion === restar) {
 			this.articulos[pos].unidades -= 1;
 		}
 
@@ -85,7 +85,7 @@ class Carrito{
 		carrito.articulos.forEach(articulo => {
 			contenido +=
 			`<tr>
-				<td class="text-center"><b>${numeroAleatorio2}</b></td>&nbsp;&nbsp;
+				<td class="text-center"><b>${numeroAleatorio}</b></td>&nbsp;&nbsp;
 				<td class="text-center"><img src='../assets/img/${articulo.codigo}.jpg' width='40' height='40' alt='imagen'></th>&nbsp;&nbsp;
 				<td class="text-center"><b>${articulo.nombre}&nbsp;&nbsp;</b></td>&nbsp;
 				<td class="text-center">${articulo.descripcion}&nbsp;&nbsp;&nbsp;&nbsp;</td>&nbsp;
@@ -103,13 +103,14 @@ class Carrito{
 			</tr>`;
 			tbody.innerHTML = contenido;
 			tbody.append(tr);
-			numeroAleatorio2=parseInt(Math.random()*(100000-1) + 1);;
+			numeroAleatorio=parseInt(Math.random()*(100000-1) + 1);;
 
 		});
 
 		this.calcularPrecioTotal();
 
 		botonEliminar.addEventListener("click", () => this.borraArticulo());
+		//botonIrACarrito.addEventListener("click", () => ventanaDialogoCarrito.close());
 		botonIrACarrito.addEventListener("click", () => ventanaDialogoCarrito.showModal());
 		botonSeguirComprando.addEventListener('click', () => ventanaDialogoCarrito.close());
 
