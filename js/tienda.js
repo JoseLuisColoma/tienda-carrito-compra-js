@@ -71,7 +71,7 @@ function creaArticulosDOM() {
 
 function ponArticuloEnCarrito(articulo){
 	carrito.anyadeArticulo(articulo);
-	console.log("articulo creado correctamente");
+	console.log("artículo creado correctamente");
 }
 
 
@@ -88,11 +88,10 @@ function verCarro(){
 		carrito.verCarrito();
 		ventanaDialogoCarrito.showModal();
 	}
-
 }
 
 function efectuaPedido(){
-	alert("Su pedido se ha realizado correctamente.\nGracias por su compra\n\n(el pedido se ha enviado al servidor)");
+	alert("Su pedido se ha realizado correctamente.\nMuchas gracias por tu compra.\n\n(el pedido se ha enviado al servidor)");
 	let ventanaDialogoCarrito = document.getElementById("miDialogo");
 	ventanaDialogoCarrito.close();
 	console.log("OBJETO CARRITO ENVIADO AL SERVIDOR:");
@@ -101,6 +100,7 @@ function efectuaPedido(){
 	carrito= new Carrito(id);
 
 }
+
 
 function pedidoRealizado(){
 	let botonHacerPedido = document.getElementById('btnEfectuaPedido');
@@ -112,27 +112,20 @@ function esAdministrador(){
 	document.getElementById('btnAdministrador').onclick = function(){
 		let isAdministrador = confirm('¡Hola!\nEsta zona es SOLO para administradores.\nSe te exigirá una constraseña a continuación.\n\n¿Deseas continuar?');;
 		if(isAdministrador){
-		alert("contraseña ...  OK\n\nBienvenido, Administrador.")
+		alert("Contraseña ...  OK\n\nBienvenido, Administrador.\n\nNota: Recuerda que debes estar conectado al servidor. \nTe aconsejamos utilizar json-server\n($ json-server --watch datos.json)");
 		}else{
 		 alert("No tienes acceso como Administrador");
 		}
 	}
 }
 
+
 window.onload=()=>{
 	creaListaCriterios();
-
-	if((carrito.articulos.length > 0 )){
-		ventanaDialogoCarrito.showModal();
-	}else if (carrito.articulos.length > 0 && irACarrito.onclick){
-		alert("El carrito está vacio");
-		ventanaDialogoCarrito.close();
-	}
 
 	if (irACarrito){
 		irACarrito.addEventListener('click', () => verCarro());
 	}
-
 	creaArticulosDOM(criterios[0]);
 	actualizaReloj();
 	pedidoRealizado();

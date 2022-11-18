@@ -17,9 +17,8 @@ body{
 
 
 .navbarExtra{
-  /*display:grid;*/
-  /*grid-template-columns: 1fr auto;*/
-  align-items: center;
+  display:flex;
+  justify-content: flex-end;
   background-color: steelblue;
   font-family: sans-serif;
   vertical-align: middle;
@@ -128,6 +127,8 @@ td, tr, th, table {
 
 
 .btnAdministrador{
+  display:flex;
+  justify-content: flex-end;
   float: right;
   font-size: 14px;
   padding: 8px;
@@ -139,6 +140,8 @@ td, tr, th, table {
 
 
 .btnAdministrador:hover{
+  display:flex;
+  justify-content: flex-end;
   float: right;
   font-size: 14px;
   padding: 9px;
@@ -148,7 +151,6 @@ td, tr, th, table {
   color:white;
   margin-right: 30px;
 }
-
 
 .btnVolver{
   font-size: 14px;
@@ -169,8 +171,6 @@ td, tr, th, table {
   color:white;
   margin-right: 30px;
 }
-
-
 
 .btnExtra{
   color: white;

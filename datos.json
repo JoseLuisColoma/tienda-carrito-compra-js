@@ -107,6 +107,12 @@
       "nombre": "Iphone 14",
       "descripcion": "256GB, Negro",
       "precio": 2100
+    },
+    {
+      "id": "m10",
+      "nombre": "iPhone15",
+      "descripcion": "512GB, oro",
+      "precio": 4000
     }
   ]
 }

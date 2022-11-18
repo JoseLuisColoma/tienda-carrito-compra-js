@@ -62,4 +62,4 @@ function actualizaReloj() {
   let situa = document.getElementById('posicionReloj');
   situa.innerHTML = escribe;
   reloj = setTimeout("actualizaReloj()", frecuencia);
-}
+ }
